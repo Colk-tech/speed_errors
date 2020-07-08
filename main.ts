@@ -57,14 +57,14 @@ function update_current_speed () {
         calculate_acceralaton_sum()
         if (current_acceralation_sum < 0) {
             last_update_time_ms = current_time_ms
-            speed_delta = Math.sqrt(Math.abs(acceralation_list_x_y_z[0] * g_to_km_ss + (acceralation_list_x_y_z[1] * g_to_km_ss + acceralation_list_x_y_z[2] * g_to_km_ss))) * (time_delta * -0.001) / 3600 + current_speed
+            speed_delta = Math.sqrt(Math.abs(acceralation_list_x_y_z[0] * g_to_km_ss + (acceralation_list_x_y_z[1] * g_to_km_ss + (acceralation_list_x_y_z[2] + 1024) * g_to_km_ss))) * (time_delta * -0.001) / 3600 + current_speed
             current_speed += speed_delta
         } else {
             if (current_acceralation_sum == 0) {
                 _ = 0
             } else {
                 last_update_time_ms = current_time_ms
-                speed_delta = Math.sqrt(acceralation_list_x_y_z[0] * g_to_km_ss + (acceralation_list_x_y_z[1] * g_to_km_ss + acceralation_list_x_y_z[2] * g_to_km_ss)) * (time_delta * 0.001) / 3600 + current_speed
+                speed_delta = Math.sqrt(acceralation_list_x_y_z[0] * g_to_km_ss + (acceralation_list_x_y_z[1] * g_to_km_ss + (acceralation_list_x_y_z[2] + 1024) * g_to_km_ss)) * (time_delta * 0.001) / 3600 + current_speed
                 current_speed += speed_delta
             }
         }

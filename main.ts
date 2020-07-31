@@ -36,7 +36,7 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 function change_speed_limit (delta: number) {
-    if (display_limit + delta <= 0 || display_limit + delta > 9) {
+    if (display_limit + delta < 1 || display_limit + delta > 9) {
         _ = 0
     } else {
         display_limit += delta
